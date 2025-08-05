@@ -1,35 +1,54 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { assets } from '../../assets/assets'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { assets } from "../../assets/assets";
 
 const Sidebar = () => {
-    return (
-    <>
-        <div>
+  const navItems = [
+    {
+      label: "Dashboard",
+      path: "/admin",
+      icon: assets.home_icon,
+    },
+    {
+      label: "Add Blogs",
+      path: "/admin/addblog",
+      icon: assets.add_icon,
+    },
+    {
+      label: "Blog Lists",
+      path: "/admin/listblog",
+      icon: assets.list_icon,
+    },
+    {
+      label: "Comments",
+      path: "/admin/comments",
+      icon: assets.comment_icon,
+    },
+  ];
 
-            <NavLink end={true} to={'/admin'} className={({isActive})=>` flex items-center gap-3 py-3.5 md:px-9 md:min-w-64 cursor-pointer ${isActive && " bg-primary/10 border-r-4 border-primary"}`}>
-                <img src={assets.home_icon} alt="" className=' min-w-4 w-5' />
-                <p className=' hidden md:inline-block'>Dashboard</p>
-            </NavLink>
+  return (
+    <div className="flex flex-col gap-1 w-full">
+      {navItems.map(({ label, path, icon }) => (
+        <NavLink
+          key={path}
+          end={path === "/admin"}
+          to={path}
+          className={({ isActive }) =>
+            `flex items-center gap-3 py-3.5 px-5 md:px-9 w-full transition-all duration-150 
+             hover:bg-primary/5 hover:text-primary 
+             ${
+               isActive
+                 ? "bg-primary/10 border-r-4 border-primary text-primary"
+                 : ""
+             }`
+          }
+        >
+          <img src={icon} alt={`${label} icon`} className="w-5 min-w-5" />
+          <p className="md:inline-block">{label}</p>
+        </NavLink>
+      ))}
+    </div>
+  );
+};
 
-            <NavLink to={'/admin/addblog'} className={({isActive})=>` flex items-center gap-3 py-3.5 md:px-9 md:min-w-64 cursor-pointer ${isActive && " bg-primary/10 border-r-4 border-primary"}`}>
-                <img src={assets.add_icon} alt="" className=' min-w-4 w-5' />
-                <p className=' hidden md:inline-block'>Add Blogs</p>
-            </NavLink>
-
-            <NavLink to={'/admin/listblog'} className={({isActive})=>` flex items-center gap-3 py-3.5 md:px-9 md:min-w-64 cursor-pointer ${isActive && " bg-primary/10 border-r-4 border-primary"}`}>
-                <img src={assets.list_icon} alt="" className=' min-w-4 w-5' />
-                <p className=' hidden md:inline-block'>Blog Lists</p>
-            </NavLink>
-
-            <NavLink to={'/admin/comments'} className={({isActive})=>` flex items-center gap-3 py-3.5 md:px-9 md:min-w-64 cursor-pointer ${isActive && " bg-primary/10 border-r-4 border-primary"}`}>
-                <img src={assets.comment_icon} alt="" className=' min-w-4 w-5' />
-                <p className=' hidden md:inline-block'>Comments</p>
-            </NavLink>
-
-        </div>
-    </>
-)
-}
-
-export default Sidebar
+export default Sidebar;

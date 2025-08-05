@@ -1,18 +1,35 @@
-import React from 'react'
+import React from "react";
 
 const NewsLetter = () => {
-    return (
-    <>
-        <div className=' flex flex-col items-center justify-center text-center space-y-2 my-32'>
-            <h1 className=' md:text-4xl text-2xl font-semibold'>Never Miss a Blog!</h1>
-            <p className='md:text-lg text-gray-500/70 pb-8'>Subscribe to get the latest blog, new tech, and exclusive news.</p>
-            <form className=' flex items-center justify-between max-w-2xl w-full md:h-13 h-12'>
-                <input type="text" placeholder='Enter your email id' required className=' border border-gray-300 rounded-md h-full border-r-0 outline-none w-full rounded-r-none px-3 text-gray-500' />
-                <button className=' md:px-12 px-8 h-full text-white bg-primary/80 hover:bg-primary transition-all cursor-pointer rounded-md rounded-l-none' type='submit'>Subscribe</button>
-            </form>
-        </div>
-    </>
-)
-}
+  return (
+    <div className="flex flex-col items-center justify-center text-center space-y-2 px-4 sm:px-6 md:px-0 my-20 sm:my-28">
+      {/* Heading */}
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold">
+        Never Miss a Blog!
+      </h1>
 
-export default NewsLetter
+      {/* Subtext */}
+      <p className="text-sm sm:text-base md:text-lg text-gray-500/80 max-w-xl">
+        Subscribe to get the latest blogs, tech updates, and exclusive news.
+      </p>
+
+      {/* Subscription Form */}
+      <form className="flex flex-col sm:flex-row items-center w-full max-w-2xl mt-6 gap-3 sm:gap-0">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          required
+          className="w-full sm:w-[70%] h-12 px-4 text-sm border border-gray-300 rounded-md sm:rounded-r-none outline-none text-gray-700"
+        />
+        <button
+          type="submit"
+          className="w-full sm:w-auto h-12 px-8 sm:px-12 text-sm text-white bg-primary hover:bg-primary/90 transition-all rounded-md sm:rounded-l-none"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default NewsLetter;
